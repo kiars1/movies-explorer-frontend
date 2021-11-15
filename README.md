@@ -11,4 +11,4 @@ Yandex.Практикум диплом. Frontend
 
 * Ссылка на сайт
 * Публичный API
-* [Ссылка на макет в формате Figma](https://drive.google.com/file/d/1dHPLPGK33DLb3ZuqsHOafeMrEktNmeZi/view?usp=sharing)
+* [Ссылка на макет в формате PDF](https://drive.google.com/file/d/1yy74CPQmu9QxMheKZ0OZ-bI0SQhaU2fm/view?usp=sharing)

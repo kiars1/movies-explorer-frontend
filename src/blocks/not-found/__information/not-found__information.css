@@ -1,0 +1,17 @@
+.not-found__information {
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 185px;
+}
+
+@media screen and (max-width: 670px) {
+  .not-found__information {
+    font-size: 2.4vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+    .not-found__information {
+      font-size: 12px;
+    }
+  }

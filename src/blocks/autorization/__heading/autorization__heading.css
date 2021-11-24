@@ -1,0 +1,12 @@
+.autorization__heading {
+  font-weight: 500;
+  font-size: 24px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 670px) {
+  .autorization__heading {
+    text-align: center;
+  }
+}

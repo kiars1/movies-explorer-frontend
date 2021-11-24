@@ -1,0 +1,11 @@
+.about-me__subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 18px 0 26px 0;
+}
+
+@media screen and (max-width: 670px) {
+  .about-me__subtitle {
+    margin: 20px 0 20px 0;
+  }
+}

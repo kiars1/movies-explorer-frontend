@@ -1,0 +1,21 @@
+.not-found__heading {
+  font-size: 140px;
+  font-weight: 400;
+  margin-top: 246px;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 670px) {
+  .not-found__heading {
+    margin-top: 329px;
+    font-size: 21vw;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .not-found__heading {
+    font-size: 80px;
+    box-sizing:border-box
+  }
+}

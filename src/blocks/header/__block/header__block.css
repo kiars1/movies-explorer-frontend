@@ -1,0 +1,6 @@
+.header__block {
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  align-items: center;
+  margin-left: auto;
+}

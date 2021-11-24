@@ -1,0 +1,12 @@
+.footer__information {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+
+@media screen and (max-width: 670px) {
+  .footer__information {
+    display: grid;
+    justify-content: center;
+  }
+}

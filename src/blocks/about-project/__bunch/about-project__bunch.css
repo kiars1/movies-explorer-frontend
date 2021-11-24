@@ -1,0 +1,7 @@
+.about-project__bunch {
+    width: 20%;
+}
+
+.about-project__bunch:nth-child(2) {
+    width: 80%;
+}

@@ -1,0 +1,12 @@
+.about-project__description {
+  font-size: 12px;
+  max-width: 550px;
+  margin: 0;
+  margin-right: 30px;
+}
+
+@media screen and (max-width: 670px) {
+  .about-project__description {
+    font-size: 11px;
+  }
+}

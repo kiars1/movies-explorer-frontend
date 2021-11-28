@@ -12,7 +12,11 @@ import img10 from "../../images/10-min.png";
 import img11 from "../../images/11-min.png";
 import img12 from "../../images/12-min.png";
 
-function MoviesCard() {
+function MoviesCard(props) {
+  const {
+    windowWidth,
+  } = props
+
   return (
     <>
       {" "}
@@ -27,84 +31,84 @@ function MoviesCard() {
         <img src={img2} className="movies-card__image" alt=""/>
         <p className="movies-card__title">Киноальманах «100 лет дизайна»</p>
         <p className="movies-card__time">1ч 15м</p>
-        <button className="movies-card__delete"></button>
+        <button className={`movies-card__delete ${windowWidth < 350 && "movies-card__delete_mobile"}`}></button>
       </li>
       <li className="movies-card">
         <img src={img3} className="movies-card__image" alt=""/>
         <p className="movies-card__title">В погоне за Бенкси</p>
         <p className="movies-card__time">1ч 15м</p>
-        <button className="movies-card__save">Сохранить</button>
+        <button className={`movies-card__save ${windowWidth < 350 && "movies-card__save_mobile"}`}>Сохранить</button>
       </li>
       <li className="movies-card">
         <img src={img4} className="movies-card__image" alt=""/>
         <p className="movies-card__title">Баския: Взрыв реальности</p>
         <p className="movies-card__time">1ч 15м</p>
-        <button className="movies-card__save">Сохранить</button>
-        <button className="movies-card__delete"></button>
+        <button className={`movies-card__save ${windowWidth < 350 && "movies-card__save_mobile"}`}>Сохранить</button>
+        <button className={`movies-card__delete ${windowWidth < 350 && "movies-card__delete_mobile"}`}></button>
         <button className="movies-card__liked"></button>
       </li>
       <li className="movies-card">
         <img src={img5} className="movies-card__image" alt=""/>
         <p className="movies-card__title">Бег это свобода</p>
         <p className="movies-card__time">1ч 15м</p>
-        <button className="movies-card__save">Сохранить</button>
-        <button className="movies-card__delete"></button>
+        <button className={`movies-card__save ${windowWidth < 350 && "movies-card__save_mobile"}`}>Сохранить</button>
+        <button className={`movies-card__delete ${windowWidth < 350 && "movies-card__delete_mobile"}`}></button>
         <button className="movies-card__liked"></button>
       </li>
       <li className="movies-card">
         <img src={img6} className="movies-card__image" alt=""/>
         <p className="movies-card__title">Книготорговцы</p>
         <p className="movies-card__time">1ч 15м</p>
-        <button className="movies-card__save">Сохранить</button>
-        <button className="movies-card__delete"></button>
+        <button className={`movies-card__save ${windowWidth < 350 && "movies-card__save_mobile"}`}>Сохранить</button>
+        <button className={`movies-card__delete ${windowWidth < 350 && "movies-card__delete_mobile"}`}></button>
         <button className="movies-card__liked"></button>
       </li>
       <li className="movies-card">
         <img src={img7} className="movies-card__image" alt=""/>
         <p className="movies-card__title">Когда я думаю о Германии ночью</p>
         <p className="movies-card__time">1ч 15м</p>
-        <button className="movies-card__save">Сохранить</button>
-        <button className="movies-card__delete"></button>
+        <button className={`movies-card__save ${windowWidth < 350 && "movies-card__save_mobile"}`}>Сохранить</button>
+        <button className={`movies-card__delete ${windowWidth < 350 && "movies-card__delete_mobile"}`}></button>
         <button className="movies-card__liked"></button>
       </li>
       <li className="movies-card">
         <img src={img8} className="movies-card__image" alt=""/>
         <p className="movies-card__title">Gimme Danger: История Игги и The Stooges</p>
         <p className="movies-card__time">1ч 15м</p>
-        <button className="movies-card__save">Сохранить</button>
-        <button className="movies-card__delete"></button>
+        <button className={`movies-card__save ${windowWidth < 350 && "movies-card__save_mobile"}`}>Сохранить</button>
+        <button className={`movies-card__delete ${windowWidth < 350 && "movies-card__delete_mobile"}`}></button>
         <button className="movies-card__liked"></button>
       </li>
       <li className="movies-card">
         <img src={img9} className="movies-card__image" alt=""/>
         <p className="movies-card__title">Дженис: Маленькая девочка грустит</p>
         <p className="movies-card__time">1ч 15м</p>
-        <button className="movies-card__save">Сохранить</button>
-        <button className="movies-card__delete"></button>
+        <button className={`movies-card__save ${windowWidth < 350 && "movies-card__save_mobile"}`}>Сохранить</button>
+        <button className={`movies-card__delete ${windowWidth < 350 && "movies-card__delete_mobile"}`}></button>
         <button className="movies-card__liked"></button>
       </li>
       <li className="movies-card">
         <img src={img10} className="movies-card__image" alt=""/>
         <p className="movies-card__title">Соберись перед прыжком</p>
         <p className="movies-card__time">1ч 15м</p>
-        <button className="movies-card__save">Сохранить</button>
-        <button className="movies-card__delete"></button>
+        <button className={`movies-card__save ${windowWidth < 350 && "movies-card__save_mobile"}`}>Сохранить</button>
+        <button className={`movies-card__delete ${windowWidth < 350 && "movies-card__delete_mobile"}`}></button>
         <button className="movies-card__liked"></button>
       </li>
       <li className="movies-card">
         <img src={img11} className="movies-card__image" alt=""/>
         <p className="movies-card__title">Пи Джей Харви: A dog called money</p>
         <p className="movies-card__time">1ч 15м</p>
-        <button className="movies-card__save">Сохранить</button>
-        <button className="movies-card__delete"></button>
+        <button className={`movies-card__save ${windowWidth < 350 && "movies-card__save_mobile"}`}>Сохранить</button>
+        <button className={`movies-card__delete ${windowWidth < 350 && "movies-card__delete_mobile"}`}></button>
         <button className="movies-card__liked"></button>
       </li>
       <li className="movies-card">
         <img src={img12} className="movies-card__image" alt=""/>
         <p className="movies-card__title">По волнам: Искусство звука в кино</p>
         <p className="movies-card__time">1ч 15м</p>
-        <button className="movies-card__save">Сохранить</button>
-        <button className="movies-card__delete"></button>
+        <button className={`movies-card__save ${windowWidth < 350 && "movies-card__save_mobile"}`}>Сохранить</button>
+        <button className={`movies-card__delete ${windowWidth < 350 && "movies-card__delete_mobile"}`}></button>
         <button className="movies-card__liked"></button>
       </li>
     </>

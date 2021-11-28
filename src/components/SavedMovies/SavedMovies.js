@@ -2,11 +2,15 @@ import React from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
-function SavedMovies() {
+function SavedMovies(props) {
+  const {
+    windowWidth,
+  } = props
+  
   return (
     <main className="savedmovies">
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList windowWidth={windowWidth}/>
     </main>
   );
 }

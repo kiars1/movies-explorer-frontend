@@ -35,6 +35,9 @@
   opacity: 0;
   transition: opacity 0.5s;
 }
+.movies-card__delete_mobile {
+  opacity: 1;
+}
 
 .movies-card__image {
   overflow: hidden;
@@ -100,6 +103,10 @@
   padding: 0;
   opacity: 0;
   transition: opacity 0.5s;
+}
+
+.movies-card__save_mobile {
+  opacity: 1;
 }
 
 .movies-card__time {

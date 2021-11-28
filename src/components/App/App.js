@@ -40,11 +40,11 @@ function App() {
       <Header windowWidth={windowWidth} isOpen={isHandleNavigationClick} onClose={handleNavigationClose} NavigationClick={handleNavigationClick}/>
       <Switch>
         <Route exact path="/movies">
-          <Movies />
+          <Movies windowWidth={windowWidth}/>
         </Route>
 
         <Route exact path="/saved-movies">
-          <SavedMovies />
+          <SavedMovies windowWidth={windowWidth}/>
         </Route>
 
         <Route exact path="/profile">

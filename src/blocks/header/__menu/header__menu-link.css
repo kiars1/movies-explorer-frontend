@@ -1,9 +1,0 @@
-.header__menu-link {
-  text-decoration: none;
-  color: #000;
-  font-size: 13px;
-}
-
-.header__menu-link:nth-child(odd){
-    font-weight: 500;
-}

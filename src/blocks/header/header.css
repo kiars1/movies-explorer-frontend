@@ -1,9 +1,0 @@
-.header {
-  display: flex;
-  margin: auto;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 18px;
-  padding-top: 18px;
-}

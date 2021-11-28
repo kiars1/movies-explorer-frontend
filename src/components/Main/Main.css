@@ -1,0 +1,24 @@
+.main__title {
+  font-size: 22px;
+  font-weight: 400;
+  padding: 110px 0 23px 0;
+  margin: 0;
+  border-bottom: 1px solid #000;
+}
+
+@media screen and (max-width: 768px) {
+  .main__title {
+    padding: 90px 0 23px 0;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .main__title {
+    padding: 70px 0 28px 0;
+  }
+}
+
+.main__title_position {
+  max-width: 90%;
+  margin: auto;
+}

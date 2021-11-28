@@ -38,6 +38,7 @@
   margin-right: 70px;
   transition: opacity 0.5s;
   border: none;
+  cursor: pointer;
 }
 
 .account__button:hover {

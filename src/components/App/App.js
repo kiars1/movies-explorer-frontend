@@ -22,9 +22,22 @@ function App() {
     setIsHandleNavigationClick(false);
   }
 
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  function updateWidth() {
+    setWindowWidth(window.innerWidth);
+  }
+
+  React.useEffect(() => {
+    window.addEventListener("resize", updateWidth);
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    };
+  });
+
   return (
     <div className="app">
-      <Header isOpen={isHandleNavigationClick} onClose={handleNavigationClose} NavigationClick={handleNavigationClick}/>
+      <Header windowWidth={windowWidth} isOpen={isHandleNavigationClick} onClose={handleNavigationClose} NavigationClick={handleNavigationClick}/>
       <Switch>
         <Route exact path="/movies">
           <Movies />
@@ -35,7 +48,7 @@ function App() {
         </Route>
 
         <Route exact path="/profile">
-          <Profile />
+          <Profile windowWidth={windowWidth}/>
         </Route>
         <Route exact path="/">
           <Main />

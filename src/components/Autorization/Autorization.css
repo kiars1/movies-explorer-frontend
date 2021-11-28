@@ -4,9 +4,9 @@
   margin-top: 70px;
 }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 500px) {
   .autorization {
-    max-width: 90%;
+    max-width: 80%;
   }
 }
 
@@ -84,6 +84,12 @@
   flex-direction: column;
 }
 
+@media screen and (max-width: 500px) {
+  .autorization__form {
+    align-items: center;
+  }
+}
+
 .autorization__heading {
   font-weight: 500;
   font-size: 24px;
@@ -155,6 +161,12 @@
   font-size: 10px;
   color: #a0a0a0;
   margin: 10px 0 10px 0;
+}
+
+@media screen and (max-width: 500px) {
+  .autorization__tag {
+    margin: 10px auto 10px 0;
+  }
 }
 
 .autorization__title {

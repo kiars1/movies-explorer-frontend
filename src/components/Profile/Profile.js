@@ -1,12 +1,17 @@
 import React from "react";
 
-function Profile() {
+function Profile(props) {
+  const {
+    windowWidth,
+  } = props
+
   return (
     <main className="profile">
+      <h2 className={`profile__title ${windowWidth > 768 && "profile__title_hidden"}`}>Привет, Виталий!</h2>
       <form className="profile__form">
         <div className="profile__info">
-          <p className="profile__title">Имя</p>
-          <p className="profile__title">Email</p>
+          <p className="profile__subtitle">Имя</p>
+          <p className="profile__subtitle">Email</p>
         </div>
         <div className="profile__info">
           <input

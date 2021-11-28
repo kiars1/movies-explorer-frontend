@@ -9,20 +9,8 @@ function Header(props) {
     isOpen,
     onClose,
     NavigationClick,
+    windowWidth,
   } = props
-
-  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
-
-  function updateWidth() {
-    setWindowWidth(window.innerWidth);
-  }
-
-  React.useEffect(() => {
-    window.addEventListener("resize", updateWidth);
-    return () => {
-      window.removeEventListener("resize", updateWidth);
-    };
-  });
 
   return (
     <>

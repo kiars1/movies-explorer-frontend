@@ -3,7 +3,7 @@
   margin: auto;
 }
 
-@media screen and (max-width: 1220px) {
+@media screen and (max-width: 1278px) {
   .movies {
     max-width: 95%;
   }

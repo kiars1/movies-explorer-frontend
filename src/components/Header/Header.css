@@ -1,0 +1,124 @@
+.header {
+  display: flex;
+  margin: auto;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  padding-top: 18px;
+}
+
+.header__block {
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  align-items: center;
+  margin-left: auto;
+}
+
+.header__button {
+  background-color: #3456f3;
+  width: 76px;
+  height: 32px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-right: 70px;
+  transition: opacity 0.5s;
+}
+
+.header__button:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s;
+}
+
+@media screen and (max-width: 768px) {
+  .header__button {
+    margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .header__button {
+    font-size: 10px;
+    width: 54px;
+    height: 26px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header__button {
+    margin-right: 14px;
+  }
+}
+
+.header__landing {
+  background-color: #dddee3;
+}
+
+.header__link {
+  font-size: 12px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  margin-right: 30px;
+  transition: opacity 0.5s;
+}
+
+.header__link:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s;
+}
+
+@media screen and (max-width: 670px) {
+  .header__link {
+    font-size: 10px;
+    margin-right: 14px;
+  }
+}
+
+.header__logo {
+  width: 38px;
+  height: 38px;
+  margin-left: 70px;
+}
+
+@media screen and (max-width: 768px) {
+  .header__logo {
+    margin-left: 30px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .header__logo {
+    margin-left: 14px;
+  }
+}
+
+.header__menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  justify-items: start;
+  align-items: baseline;
+  margin-left: 44px;
+}
+
+.header__menu-link {
+  text-decoration: none;
+  color: #000;
+  font-size: 13px;
+  transition: opacity 0.5s;
+}
+
+.header__menu-link:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s;
+}
+
+.header__menu-link:nth-child(odd) {
+  font-weight: 500;
+}

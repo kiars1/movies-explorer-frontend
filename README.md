@@ -9,6 +9,7 @@ Yandex.Практикум диплом. Frontend
 
 # Ссылки
 
-* Ссылка на сайт
-* Публичный API
+* [`https://movie.kiars1.nomoredomains.work/`](https://movie.kiars1.nomoredomains.work/);
+* [`http://movie.kiars1.nomoredomains.work/`](http://movie.kiars1.nomoredomains.work/);
+* Публичный API 51.250.0.179
 * [Ссылка на макет в формате Figma](https://drive.google.com/file/d/1oDMALS-1OInketgb3BDvXgvnJzNrf9Ng/view?usp=sharing)

@@ -36,7 +36,7 @@
 
 .profile__button:nth-child(4) {
   color: #ee3465;
-  margin-top: 16px;
+  margin-top: 0px;
   grid-column: 1/4;
   grid-row: 3/3;
 }

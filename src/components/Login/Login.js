@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../images/Logo.svg";
+import Logo from "../../images/Logo_1.svg";
 
 function Login() {
   return (

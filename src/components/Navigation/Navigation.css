@@ -1,5 +1,5 @@
 .navigation__bar {
-  background-image: url(../../images/Navigation.svg);
+  background-image: url(../../images/Navigation_1.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fff;
@@ -24,7 +24,7 @@
 }
 
 .navigation__close {
-  background-image: url(../../images/Dislike.svg);
+  background-image: url(../../images/Dislike_1.svg);
   background-size: 22px;
   background-repeat: no-repeat;
   background-position: center;

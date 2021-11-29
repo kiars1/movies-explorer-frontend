@@ -1,6 +1,6 @@
 import React from "react";
 
-import Avatar from "../../images/Avatar.JPG";
+import Avatar from "../../images/Avatar_1.jpg";
 
 function AboutMe() {
   return (

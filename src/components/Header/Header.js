@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Link } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import Account from "../Account/Account";
-import headerLogo from "../../images/Logo.svg";
+import headerLogo from "../../images/Logo_1.svg";
 
 function Header(props) {
   const {

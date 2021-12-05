@@ -16,49 +16,27 @@
   border: none;
   font-size: 13px;
   cursor: pointer;
-  margin-top: 210px;
+  margin: 210px auto 0 auto;
+  padding: 10px;
   grid-column: 1/4;
   justify-items: center;
   transition: opacity 0.5s;
-  grid-row: 2/2;
-}
-
-.profile__button_hidden {
-  visibility: hidden;
-  opacity: 0;
-  z-index: -1;
+  grid-row: 3/3;
+  user-select: none;
+  max-width: 140px;
 }
 
 .profile__button_disable {
   color: #C2C2C2;
-  background-color: #F8F8F8;
-}
-
-.profile__button:nth-child(4) {
-  color: #ee3465;
-  margin-top: 0px;
-  grid-column: 1/4;
-  grid-row: 3/3;
+  background-color: #fff;
 }
 
 .profile__button:nth-child(6) {
-  color: #fff;
-  background-color: #3456f3;
-  border: none;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  width: 396px;
-  height: 45px;
-  border-radius: 3px;
-  padding: 0;
-  cursor: pointer;
-  transition: opacity 0.5s;
-  margin-top: 16px;
+  color: #ee3465;
+  margin: 0px auto;
   grid-column: 1/4;
-  margin: 210px auto 0 auto;
-  grid-row: 2/3;
-}
+  grid-row: 4/4;
+};
 
 @media screen and (max-width: 670px) {
   .profile__button:nth-child(6) {
@@ -136,7 +114,7 @@
   font-size: 11px;
   font-weight: 400;
   border-bottom: 1px solid #e8e8e8;
-  padding: 10px 0px 12px 5px;
+  padding: 10px 5px 12px 5px;
   white-space: nowrap;
   overflow: hidden;
   text-align: right;
@@ -168,6 +146,10 @@
   .profile__input {
     width: 195px;
   }
+}
+
+.profile__input_error {
+  color: #ee3465;
 }
 
 .profile__title {
@@ -209,6 +191,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-align: left;
+  user-select: none;
 }
 
 .profile__subtitle:nth-child(even) {
@@ -219,13 +202,19 @@
 .profile__alarm {
   color: #ee3465;
   font-size: 10px;
-  margin: 0 0 0 0;
   opacity: 0;
   transition: opacity 0.5s;
   grid-column: 1/4;
-  margin: 190px auto 0 auto;
-  grid-row: 2/3;
+  margin: 0 0 0 auto;
+  grid-row: 2/2;
   height: 20px;
+  user-select: none;
+  text-align: end;
+}
+
+.profile__alarm:nth-child(4) {
+  grid-row: 3/4;
+  margin: 190px auto 0 auto;
 }
 
 .profile__alarm_active {

@@ -2,14 +2,18 @@ import React from "react";
 
 import Avatar from "../../images/Avatar_1.jpg";
 
-function AboutMe() {
+function AboutMe(props) {
+  const {
+    myAge,
+  } = props
+
   return (
     <section className="about-me">
       <h2 className="main__title">Студент</h2>
       <div className="about-me__info">
         <div>
           <h3 className="about-me__title">Кирилл</h3>
-          <h4 className="about-me__subtitle">Фронтенд-разработчик, 27 лет</h4>
+          <h4 className="about-me__subtitle">Фронтенд-разработчик, {myAge} лет</h4>
           <p className="about-me__description">
             Я родился и живу в Новосибирск, закончил гуманитарный факультет
             НГТУ. Я люблю слушать музыку, а ещё увлекаюсь играми. Недавно начал

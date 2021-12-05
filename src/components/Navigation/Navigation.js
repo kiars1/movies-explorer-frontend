@@ -1,28 +1,70 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Account from "../Account/Account";
+import NavMob from "../NavMob/NavMob";
 
 function Navigation(props) {
-  const {
-    isOpen,
-    onClose,
-    NavigationClick,
-  } = props
+  const { isOpen, onClose, NavigationClick, windowWidth, loggedIn } = props;
 
+  return (
+    <div className="navigation">
+      {loggedIn ? (
+        <>
+          {windowWidth <= 768 && (
+              <NavMob
+                isOpen={isOpen}
+                onClose={onClose}
+                NavigationClick={NavigationClick}
+              />
+          )}
+          {windowWidth > 768 && (
+            <div className="navigation__group">
+              <nav>
+                <div className="navigation__menu">
+                  <NavLink
+                    exact
+                    to="/movies"
+                    className="navigation__menu-link"
+                    activeClassName="navigation__menu-link_active"
+                  >
+                    Фильмы
+                  </NavLink>
+                  <NavLink
+                    exact
+                    to="/saved-movies"
+                    className="navigation__menu-link"
+                    activeClassName="navigation__menu-link_active"
+                  >
+                    Сохраненные фильмы
+                  </NavLink>
+                </div>
+              </nav>
+              <NavLink
+                exact
+                to="/profile"
+                className="account__block"
+                activeClassName="navigation__menu-link_active"
+              >
+                <Account />
+              </NavLink>
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          <div className="navigation__block">
+            <Link className="navigation__link" to="/signup">
+              Регистрация
+            </Link>
 
-
-  return <div>
-    <button className="navigation__bar" onClick={NavigationClick} ></button>
-    <div className={`navigation__menu  ${isOpen && 'navigation__menu_oppened'}`}>
-    <button className="navigation__close" onClick={onClose}></button>
-    <div className="navigation__link">
-      <Link to="/" className="navigation__title" onClick={onClose}>Главная</Link>
-      <Link to="/movies" className="navigation__title navigation__title_active" onClick={onClose}>Фильмы</Link>
-      <Link to="/saved-movies" className="navigation__title" onClick={onClose}>Сохраненные фильмы</Link>
+            <Link to="/signin">
+              <button className="navigation__button">Войти</button>
+            </Link>
+          </div>
+        </>
+      )}
     </div>
-    <Account onClose={onClose}/>
-    </div>
-  </div>;
+  );
 }
 
 export default Navigation;

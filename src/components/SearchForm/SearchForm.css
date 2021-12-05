@@ -12,6 +12,7 @@
   font-size: 12px;
   margin-top: 30px;
   margin-bottom: 40px;
+  user-select: none;
 }
 
 @media screen and (max-width: 670px) {
@@ -33,6 +34,7 @@
   cursor: pointer;
   margin-left: 10px;
   transition: opacity 0.5s;
+  user-select: none;
 }
 
 .search-form__button:hover {

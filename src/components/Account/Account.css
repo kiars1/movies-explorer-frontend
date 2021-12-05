@@ -3,11 +3,13 @@
   grid-template-columns: repeat(2, min-content);
   align-items: center;
   margin-left: auto;
+  text-decoration: none;
+  user-select: none;
 }
 
 @media screen and (max-width: 768px) {
   .account__block {
-    margin: auto auto 92px auto;
+    margin: auto auto 5px auto;
   }
 }
 
@@ -21,7 +23,6 @@
   font-size: 14px;
   text-decoration: none;
   color: #000;
-  font-weight: 500;
   margin: 0;
   margin-right: 17px;
 }
@@ -39,6 +40,7 @@
   transition: opacity 0.5s;
   border: none;
   cursor: pointer;
+  user-select: none;
 }
 
 .account__button:hover {

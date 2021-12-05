@@ -1,7 +1,11 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-function Footer() {
+function Footer(props) {
+  const {
+    year,
+  } = props
+
   return (
     <Route exact path={["/", "/movies", "/saved-movies"]}>
       <footer className="footer">
@@ -9,7 +13,7 @@ function Footer() {
           Учебный проект Яндекс.Практикум х BeatFilm.
         </h2>
         <div className="footer__information">
-          <p className="footer__copyright">© 2022</p>
+          <p className="footer__copyright">© {year}</p>
           <nav>
             <ul className="footer__menu">
               <li>

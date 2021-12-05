@@ -6,12 +6,45 @@ import Preloader from "../Preloader/Preloader";
 function Movies(props) {
   const {
     windowWidth,
-  } = props
+    isLoading,
+    getMoviesAll,
+    movies,
+    resultMovies,
+    savedMovies,
+    handleSaveMovie,
+    handleRemoveMovie,
+  } = props;
 
-  return <main className="movies">
-    <SearchForm />
-    <MoviesCardList windowWidth={windowWidth}/>
-  </main>;
+  const [checkWord, setCheckWord] = React.useState("");
+  const [checkShort, setCheckShort] = React.useState(false);
+
+  const onSubmitForm = () => {
+    getMoviesAll(checkWord, checkShort);
+  };
+
+  return (
+    <main className="movies">
+      <SearchForm
+        setCheckShort={setCheckShort}
+        checkWord={checkWord}
+        setCheckWord={setCheckWord}
+        onSubmitForm={onSubmitForm}
+      />
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <MoviesCardList
+          windowWidth={windowWidth}
+          movies={movies}
+          allMovies={movies}
+          resultMovies={resultMovies}
+          savedMovies={savedMovies}
+          handleSaveMovie={handleSaveMovie}
+          handleRemoveMovie={handleRemoveMovie}
+        />
+      )}
+    </main>
+  );
 }
 
 export default Movies;

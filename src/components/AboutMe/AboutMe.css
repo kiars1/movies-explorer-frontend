@@ -10,6 +10,7 @@
   object-fit: cover;
   border-radius: 10px;
   flex-basis: 270px;
+  user-select: none;
 }
 
 @media screen and (max-width: 768px) {

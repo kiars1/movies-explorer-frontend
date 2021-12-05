@@ -6,13 +6,16 @@ import Techs from "../Techs/Techs";
 import AboutMe from "../AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Portfolio";
 
-function Main() {
+function Main(props) {
+  const {
+    myAge,
+  } = props
   return (
     <main className="main">
         <Promo />
         <AboutProject />
         <Techs />
-        <AboutMe />
+        <AboutMe myAge={myAge}/>
         <Portfolio />
     </main>
   );

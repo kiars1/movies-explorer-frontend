@@ -1,6 +1,53 @@
 .app {
-    background-color: #fff;
-    font-family: Inter, Arial, sans-serif;
-    margin: 0 auto;
-  }
-  
+  background-color: #fff;
+  font-family: Inter, Arial, sans-serif;
+  margin: 0 auto;
+}
+
+input:focus {
+  outline: 0px solid transparent;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+a:focus {
+  outline: 0.5px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+}
+
+.autorization__button:focus {
+  outline: 0px solid transparent;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+}
+
+.navigation__button:focus {
+  outline: 0px solid transparent;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+}
+
+.account__button:focus {
+  outline: 0px solid transparent;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+}
+
+.navmob__bar:focus {
+  outline: 0px solid transparent;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+}
+
+.movies-card-list__button:focus {
+  outline: 0px solid transparent;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+}
+
+button:focus {
+  outline: 0px solid transparent;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 30px;
+}

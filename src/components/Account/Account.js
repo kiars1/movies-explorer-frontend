@@ -1,17 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 function Account(props) {
-  const {
-    onClose,
-  } = props
+  const { onClose } = props;
   return (
-    <div className="account__block">
+    <div className="account__block" onClick={onClose}>
       <p className="account__email">Акакунт</p>
-
-      <Link to="/profile">
-        <button className="account__button" onClick={onClose}/>
-      </Link>
+      <button className="account__button" />
     </div>
   );
 }

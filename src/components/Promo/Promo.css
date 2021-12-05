@@ -21,6 +21,7 @@
   margin: 102px 70px 60px auto;
   height: 244px;
   max-width: 722px;
+  user-select: none;
 }
 
 @media screen and (max-width: 800px) {

@@ -25,6 +25,7 @@
   text-align: center;
   margin-top: 110px;
   margin-bottom: 0;
+  user-select: none;
 }
 
 .about-project__caption:nth-child(2) {

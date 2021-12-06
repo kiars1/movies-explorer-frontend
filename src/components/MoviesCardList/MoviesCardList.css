@@ -45,6 +45,7 @@
 .movies-card-list__button_disable {
   z-index: -1;
   opacity: 0;
+  visibility: hidden;
 }
 
 .movies-card-list__title {

@@ -65,6 +65,23 @@ function App() {
     }
   }, []);
 
+  //Получаем данные пользователя
+  React.useEffect(() => {
+    if (loggedIn === true) {
+      MainApi.getUserInfo()
+        .then((res) => {
+          setCurrentUser(res);
+          localStorage.setItem("user", res._id);
+        })
+        .catch(() => {
+          console.log("Невозможно получить данные пользователя.");
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
+  }, [loggedIn]);
+
   //Регистрация пользователя
   function handleRegisterUser(name, email, password) {
     setIsLoading(true);
@@ -112,25 +129,10 @@ function App() {
     localStorage.removeItem("jwt");
     localStorage.removeItem("movies");
     localStorage.removeItem("savedMovies");
-    setLoggedIn(false);
-    history.push("/signin");
+    localStorage.removeItem("user");
+    history.push("/");
+    history.go();
   };
-
-  //Получаем данные пользователя
-  React.useEffect(() => {
-    if (loggedIn === true) {
-      MainApi.getUserInfo()
-        .then((res) => {
-          setCurrentUser(res);
-        })
-        .catch(() => {
-          console.log("Невозможно получить данные пользователя.");
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
-  }, [loggedIn]);
 
   //Обловнялем данные пользователя.
   function handleUpdateUser(name, email) {
@@ -186,21 +188,34 @@ function App() {
     if (loggedIn) {
       MainApi.getSavedMovies()
         .then((res) => {
-          if (res.movie.length === 0) {
+          const Owner = localStorage.getItem("user");
+          const savedMoviesOwner = res.movie.filter(function (movie) {
+            return movie.owner === Owner;
+          });
+
+          if (savedMoviesOwner.length === 0) {
             setResultSavedMovies("Нет добавленных фильмов");
           }
-          localStorage.setItem("savedMovies", JSON.stringify(res.movie));
-          setSavedMovies(res.movie);
+          localStorage.setItem("savedMovies", JSON.stringify(savedMoviesOwner));
+          setSavedMovies(savedMoviesOwner);
           setIsLoading(false);
         })
         .catch((err) => console.log(err.message));
     }
-  }, [loggedIn]);
+  }, [loggedIn, currentUser]);
 
   //Делаем запрос в локальное хранилище и фильтруем фильмы
   const getMoviesSave = (word, short) => {
     const movies = JSON.parse(localStorage.getItem("savedMovies"));
     if (word === "") {
+      setSavedMovies(movies);
+      if (movies.length === 0) {
+        setResultSavedMovies("Нет добавленных фильмов");
+      } else {
+        setResultSavedMovies("");
+      }
+    }
+    if (short === "") {
       setSavedMovies(movies);
       if (movies.length === 0) {
         setResultSavedMovies("Нет добавленных фильмов");
@@ -226,11 +241,18 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
-  
+
   // Функция удаления карточки
   const handleRemoveMovie = (id) => {
     MainApi.removeMovie(id)
-      .then(() => setSavedMovies(savedMovies.filter((m) => m._id !== id)))
+      .then(() => {
+        setSavedMovies(savedMovies.filter((m) => m._id !== id));
+        localStorage.setItem(
+          "savedMovies",
+          JSON.stringify(savedMovies.filter((m) => m._id !== id))
+        );
+      })
+
       .catch((err) => console.log(err.message));
   };
 

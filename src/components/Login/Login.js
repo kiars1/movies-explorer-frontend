@@ -3,10 +3,19 @@ import { Link } from "react-router-dom";
 import Logo from "../../images/Logo_1.svg";
 import { useValidation } from "../../utils/Validation.js";
 import Preloader from "../Preloader/Preloader";
+import Eye_open from "../../images/Eye_open.png";
+import Eye_close from "../../images/Eye_close.png";
 
 function Login(props) {
   const { onAuthorizeUser, errorMesage, errorVision, isLoading } = props;
   const { values, handleChange, errors, isValid } = useValidation();
+  const [isVisiblePassword, setisVisiblePassword] = React.useState("password");
+
+  function handleVisibleChange() {
+    setisVisiblePassword(
+      isVisiblePassword === "password" ? "text" : "password"
+    );
+  }
 
   //Передаем данные на уровень выше
   function handleSubmit(evt) {
@@ -36,7 +45,7 @@ function Login(props) {
           name="email"
           minLength="2"
           maxLength="30"
-          required
+          required         
         />
         <p
           className={`autorization__alarm ${
@@ -51,13 +60,14 @@ function Login(props) {
           className={`autorization__input ${
             errors["password"] !== `autorization__input_error `
           }`}
-          type="password"
+          type={isVisiblePassword}
           name="password"
           placeholder="Пароль"
           minLength="8"
           maxLength="30"
           required
-        />
+        />{isVisiblePassword === `password` ? <img src={Eye_close} onClick={handleVisibleChange} className="autorization__password" alt="password"/> :
+        <img src={Eye_open} onClick={handleVisibleChange} className="autorization__password" alt="password"/>}
         <p
           className={`autorization__alarm ${
             errors["password"] !== "" && `autorization__alarm_active`

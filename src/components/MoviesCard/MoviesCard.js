@@ -14,7 +14,7 @@ function MoviesCard(props) {
   
   const id = movie.id
 
-  function CheckForExistance(savedMovies, id) {
+  function checkSave(savedMovies, id) {
     for(var i=0;i<savedMovies.length;i++){
       if(savedMovies[i].movieId==id) return true;
     }
@@ -24,7 +24,7 @@ function MoviesCard(props) {
   const [isLike, setIsLike] = React.useState();
 
   React.useEffect(() => {
-    setIsLike(CheckForExistance(savedMovies, id))})
+    setIsLike(checkSave(savedMovies, id))})
 
   return (
     <>
@@ -68,7 +68,7 @@ function MoviesCard(props) {
             handleRemoveMovie(movie._id);
           }}
         ></button>
-        <button className={`movies-card__liked ${!isLike && "movies-card__liked_disable"}`}></button>
+        <button className={`movies-card__liked ${!isLike && "movies-card__liked_disable"} ${isLike && "movies-card__liked_opened"}`}></button>
       </li>
     </>
   );

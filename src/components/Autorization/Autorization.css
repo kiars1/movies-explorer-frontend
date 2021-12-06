@@ -25,13 +25,21 @@
   transition: opacity 0.5s;
 }
 
+.autorization__alarm:nth-child(7) {
+  margin-top: -10px;
+}
+
 .autorization__alarm:nth-child(10) {
+  margin-top: -10px;
+}
+
+.autorization__alarm:nth-child(11) {
   margin-top: 49px;
   margin-bottom: 10px;
   text-align: center;
 }
 
-.autorization__alarm:nth-child(7) {
+.autorization__alarm:nth-child(8) {
   margin-top: 137px;
   margin-bottom: 10px;
   text-align: center;
@@ -191,4 +199,31 @@
   .autorization__title {
     font-size: 12px;
   }
+}
+
+.autorization__password {
+  width: 15px;
+  height: 15px;
+  position:relative;
+  top: -30px;
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+.autorization__password:nth-child(2) {
+  width: 15px;
+  height: 15px;
+  position:relative;
+  top: -30px;
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+.autorization__clear {
+  width: 10px;
+  height: 10px;
+  position:relative;
+  top: -28px;
+  margin-left: auto;
+  margin-right: 15px;
 }

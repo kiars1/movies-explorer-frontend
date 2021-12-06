@@ -11,7 +11,7 @@ function MoviesCardList(props) {
     handleRemoveMovie,
   } = props;
 
-  const [showCards, setShowCards] = React.useState(windowWidth > 768 ? 12 : windowWidth > 320 ? 8 : 5 );
+  const [showCards, setShowCards] = React.useState(windowWidth > 768 ? 12 : windowWidth > 480 ? 8 : 5 );
   const [addCards, setAddCards] = React.useState(windowWidth > 768 ? 3 : 2);
 
   return (

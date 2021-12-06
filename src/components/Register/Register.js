@@ -11,6 +11,7 @@ function Register(props) {
   const { values, handleChange, errors, isValid } = useValidation();
   const [isVisiblePassword, setisVisiblePassword] = React.useState("password");
 
+  //Скрытие/Раскрытие видимости пароля
   function handleVisibleChange() {
     setisVisiblePassword(
       isVisiblePassword === "password" ? "text" : "password"

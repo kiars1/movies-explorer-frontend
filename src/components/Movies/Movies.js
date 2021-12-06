@@ -18,6 +18,7 @@ function Movies(props) {
   const [checkWord, setCheckWord] = React.useState("");
   const [checkShort, setCheckShort] = React.useState(false);
 
+  //Поиск
   const onSubmitForm = () => {
     getMoviesAll(checkWord, checkShort);
   };

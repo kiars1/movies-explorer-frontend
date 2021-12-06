@@ -11,6 +11,7 @@ function Login(props) {
   const { values, handleChange, errors, isValid } = useValidation();
   const [isVisiblePassword, setisVisiblePassword] = React.useState("password");
 
+  //валидация
   function handleVisibleChange() {
     setisVisiblePassword(
       isVisiblePassword === "password" ? "text" : "password"

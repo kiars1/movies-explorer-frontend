@@ -10,6 +10,7 @@ function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
   const { values, handleChange, errors, isValid } = useValidation();
 
+  //валидация
   React.useEffect(() => {
     values["name"] = currentUser.name;
     values["email"] = currentUser.email;

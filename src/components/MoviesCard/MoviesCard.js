@@ -14,6 +14,7 @@ function MoviesCard(props) {
   
   const id = movie.id
 
+  //Проверка массива на совпадение с сохраненными фильмами
   function checkSave(savedMovies, id) {
     for(var i=0;i<savedMovies.length;i++){
       if(savedMovies[i].movieId==id) return true;

@@ -17,6 +17,7 @@ function SavedMovies(props) {
   const [checkWord, setCheckWord] = React.useState("");
   const [checkShort, setCheckShort] = React.useState(false);
 
+  //Поиск
   const onSubmitForm = () => {
     getMoviesSave(checkWord, checkShort);
   };

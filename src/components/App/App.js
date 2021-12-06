@@ -294,7 +294,7 @@ function App() {
     };
   }, []);
 
-  //
+  //Функция обновления разрешения экрана
   function updateWidth() {
     setWindowWidth(window.innerWidth);
   }

@@ -4,7 +4,7 @@ import { useValidation } from "../../utils/Validation.js";
 import Preloader from "../Preloader/Preloader";
 
 function Profile(props) {
-  const { windowWidth, onSignOut, onUpdateUser, errorMesage, errorVision, setErrorVision, isLoading } =
+  const { windowWidth, onSignOut, onUpdateUser, errorMesage, errorVision, isLoading } =
     props;
 
   const currentUser = React.useContext(CurrentUserContext);
@@ -14,7 +14,6 @@ function Profile(props) {
   React.useEffect(() => {
     values["name"] = currentUser.name;
     values["email"] = currentUser.email;
-    setErrorVision(false);
   }, [currentUser]);
 
   //Передаем данные на уровень выше

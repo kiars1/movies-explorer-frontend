@@ -307,6 +307,11 @@ function App() {
     };
   });
 
+  //Да это костыль чтобы убрать сообщение об ошибке
+  function handleRouteChange() {
+    setErrorVision(false);
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
@@ -316,6 +321,7 @@ function App() {
           onClose={handleNavigationClose}
           NavigationClick={handleNavigationClick}
           loggedIn={loggedIn}
+          onRouteChange={handleRouteChange}
         />
         <Switch>
           <ProtectedRoute exact path="/movies" loggedIn={loggedIn}>
@@ -350,7 +356,6 @@ function App() {
               onUpdateUser={handleUpdateUser}
               errorMesage={errorMesage}
               errorVision={errorVision}
-              setErrorVision={setErrorVision}
               isLoading={isLoading}
             />
           </ProtectedRoute>
@@ -364,6 +369,7 @@ function App() {
               errorMesage={errorMesage}
               errorVision={errorVision}
               isLoading={isLoading}
+              onRouteChange={handleRouteChange}
             />
           </Route>
           <Route exact path="/signin">
@@ -372,6 +378,7 @@ function App() {
               errorMesage={errorMesage}
               errorVision={errorVision}
               isLoading={isLoading}
+              onRouteChange={handleRouteChange}
             />
           </Route>
           <Route path="/404">
@@ -379,7 +386,7 @@ function App() {
           </Route>
           <Redirect from="*" to="/404" />
         </Switch>
-        <Footer year={year} />
+        <Footer year={year}/>
       </div>
     </CurrentUserContext.Provider>
   );

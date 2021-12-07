@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import Account from "../Account/Account";
 
 function NavMob(props) {
-  const { isOpen, onClose, NavigationClick } = props;
+  const { isOpen, onClose, NavigationClick, onRouteChange } = props;
 
   return (
     <div className="navmob">
@@ -43,7 +43,8 @@ function NavMob(props) {
           <NavLink exact
                 to="/profile"
                 className="navmob__block"
-                activeClassName="navmob__title_active">
+                activeClassName="navmob__title_active"
+                onClick={onRouteChange}>
           <Account onClose={onClose} />
           </NavLink>
         </div>

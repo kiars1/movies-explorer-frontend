@@ -7,7 +7,7 @@ import Eye_open from "../../images/Eye_open.png";
 import Eye_close from "../../images/Eye_close.png";
 
 function Login(props) {
-  const { onAuthorizeUser, errorMesage, errorVision, isLoading } = props;
+  const { onAuthorizeUser, errorMesage, errorVision, isLoading, onRouteChange } = props;
   const { values, handleChange, errors, isValid } = useValidation();
   const [isVisiblePassword, setisVisiblePassword] = React.useState("password");
 
@@ -95,7 +95,7 @@ function Login(props) {
       </form>
       <p className="autorization__title">
         Ещё не зарегистрированы?
-        <Link className="autorization__link" to="/signup">
+        <Link className="autorization__link" to="/signup" onClick={onRouteChange}>
           Регистрация
         </Link>
       </p>

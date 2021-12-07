@@ -4,7 +4,7 @@ import Account from "../Account/Account";
 import NavMob from "../NavMob/NavMob";
 
 function Navigation(props) {
-  const { isOpen, onClose, NavigationClick, windowWidth, loggedIn } = props;
+  const { isOpen, onClose, NavigationClick, windowWidth, loggedIn, onRouteChange } = props;
 
   return (
     <div className="navigation">
@@ -15,6 +15,7 @@ function Navigation(props) {
                 isOpen={isOpen}
                 onClose={onClose}
                 NavigationClick={NavigationClick}
+                onRouteChange={onRouteChange}
               />
           )}
           {windowWidth > 768 && (
@@ -44,6 +45,7 @@ function Navigation(props) {
                 to="/profile"
                 className="account__block"
                 activeClassName="navigation__menu-link_active"
+                onClick={onRouteChange}
               >
                 <Account />
               </NavLink>

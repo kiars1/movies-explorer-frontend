@@ -10,6 +10,7 @@ function Header(props) {
     NavigationClick,
     windowWidth,
     loggedIn,
+    onRouteChange,
   } = props
 
   const history = useHistory();
@@ -24,14 +25,14 @@ function Header(props) {
       <Route exact path="/">
         <header className="header header__landing">
             <img src={headerLogo} className="header__logo" alt="Проект Муви" onClick={backToMain}/>
-          <Navigation loggedIn={loggedIn} isOpen={isOpen} onClose={onClose} NavigationClick={NavigationClick} windowWidth={windowWidth}/>
+          <Navigation loggedIn={loggedIn} isOpen={isOpen} onClose={onClose} NavigationClick={NavigationClick} windowWidth={windowWidth} onRouteChange={onRouteChange}/>
         </header>
       </Route>
 
       <Route path={["/movies", "/saved-movies", "/profile"]}>
         <header className="header">
             <img src={headerLogo} className="header__logo" alt="Проект Муви" onClick={backToMain}/>
-          <Navigation loggedIn={loggedIn} isOpen={isOpen} onClose={onClose} NavigationClick={NavigationClick} windowWidth={windowWidth}/>
+          <Navigation loggedIn={loggedIn} isOpen={isOpen} onClose={onClose} NavigationClick={NavigationClick} windowWidth={windowWidth} onRouteChange={onRouteChange}/>
         </header>
       </Route>
     </>

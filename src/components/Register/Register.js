@@ -7,7 +7,7 @@ import Eye_open from "../../images/Eye_open.png";
 import Eye_close from "../../images/Eye_close.png";
 
 function Register(props) {
-  const { onRegisterUser, errorMesage, errorVision, isLoading } = props;
+  const { onRegisterUser, errorMesage, errorVision, isLoading, onRouteChange } = props;
   const { values, handleChange, errors, isValid } = useValidation();
   const [isVisiblePassword, setisVisiblePassword] = React.useState("password");
 
@@ -24,6 +24,7 @@ function Register(props) {
 
     onRegisterUser(values["name"], values["email"], values["password"]);
   }
+
 
   return (
     <main className="autorization">
@@ -44,8 +45,8 @@ function Register(props) {
           placeholder="Имя"
           name="name"
           onChange={handleChange}
-          minlength="2"
-          maxlength="30"
+          minLength="2"
+          maxLength="30"
           pattern="[А-Яа-яA-Za-z -]{1,}"
           required
         />
@@ -116,7 +117,7 @@ function Register(props) {
       </form>
       <p className="autorization__title">
         Уже зарегистрированы?
-        <Link className="autorization__link" to="/signin">
+        <Link className="autorization__link" to="/signin" onClick={onRouteChange}>
           Войти
         </Link>
       </p>

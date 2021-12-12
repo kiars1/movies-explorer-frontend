@@ -274,7 +274,9 @@ function App() {
   function downloadSearchCashe() {
     if (localStorage.getItem("wordM") != null) {
     getMoviesAll(localStorage.getItem("wordM"),  JSON.parse(localStorage.getItem("shortM")))
-    getMoviesSave(localStorage.getItem("wordSM"),  JSON.parse(localStorage.getItem("shortSM")));
+    if (localStorage.getItem("wordSM") != null) {
+      getMoviesSave(localStorage.getItem("wordSM"),  JSON.parse(localStorage.getItem("shortSM")));
+    }
   }
   }
 

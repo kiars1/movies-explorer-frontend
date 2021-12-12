@@ -13,8 +13,6 @@ function SearchForm(props) {
   const [word, setWord] = React.useState("");
   const [short, setShort] = React.useState(false);
 
-  console.log(word)
-
   React.useEffect(() => {
     if (wordM != null) {
     location.pathname === "/movies" ? setWord(wordM) : console.log('костыль');

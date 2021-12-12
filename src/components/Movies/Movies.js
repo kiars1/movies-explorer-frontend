@@ -13,7 +13,8 @@ function Movies(props) {
     savedMovies,
     handleSaveMovie,
     handleRemoveMovie,
-    blockInput
+    blockInput,
+    savedMoviesAll
   } = props;
 
   return (
@@ -34,6 +35,7 @@ function Movies(props) {
           savedMovies={savedMovies}
           handleSaveMovie={handleSaveMovie}
           handleRemoveMovie={handleRemoveMovie}
+          savedMoviesAll={savedMoviesAll}
         />
       )}
     </main>

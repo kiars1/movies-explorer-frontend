@@ -40,6 +40,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [movies, setMovies] = React.useState([]);
   const [savedMovies, setSavedMovies] = React.useState([]);
+  const [savedMoviesAll, setSavedMoviesAll] = React.useState([]);
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   const [errorMesage, setErrorMesage] = React.useState("");
   const [errorVision, setErrorVision] = React.useState(false);
@@ -232,6 +233,7 @@ function App() {
           }
           localStorage.setItem("savedMovies", JSON.stringify(savedMoviesOwner));
           setSavedMovies(savedMoviesOwner);
+          setSavedMoviesAll(savedMoviesOwner)
           setIsLoading(false);
           downloadSearchCashe();
         })
@@ -285,6 +287,7 @@ function App() {
     MainApi.saveMovie(movie)
       .then((movie) => {
         setSavedMovies([...savedMovies, movie.movie]);
+        setSavedMoviesAll([...savedMoviesAll, movie.movie]);
         localStorage.setItem(
           "savedMovies",
           JSON.stringify([...savedMovies, movie.movie])
@@ -303,6 +306,7 @@ function App() {
     MainApi.removeMovie(id)
       .then(() => {
         setSavedMovies(savedMovies.filter((m) => m._id !== id));
+        setSavedMoviesAll(savedMoviesAll.filter((m) => m._id !== id))
         localStorage.setItem(
           "savedMovies",
           JSON.stringify(savedMovies.filter((m) => m._id !== id))
@@ -391,6 +395,7 @@ function App() {
               handleSaveMovie={handleSaveMovie}
               handleRemoveMovie={handleRemoveMovie}
               blockInput={blockInput}
+              savedMoviesAll={savedMoviesAll}
             />
           </ProtectedRoute>
 
@@ -404,6 +409,7 @@ function App() {
               handleSaveMovie={handleSaveMovie}
               handleRemoveMovie={handleRemoveMovie}
               blockInput={blockInput}
+              savedMoviesAll={savedMoviesAll}
             />
           </ProtectedRoute>
 

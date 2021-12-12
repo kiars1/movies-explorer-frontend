@@ -9,6 +9,7 @@ function MoviesCardList(props) {
     savedMovies,
     handleSaveMovie,
     handleRemoveMovie,
+    savedMoviesAll
   } = props;
 
   const [showCards, setShowCards] = React.useState(windowWidth > 768 ? 12 : windowWidth > 480 ? 8 : 5 );
@@ -30,6 +31,7 @@ function MoviesCardList(props) {
                   savedMovies={savedMovies}
                   handleSaveMovie={handleSaveMovie}
                   handleRemoveMovie={handleRemoveMovie}
+                  savedMoviesAll={savedMoviesAll}
                 />
               );
             })}

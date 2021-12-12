@@ -29,6 +29,7 @@
 .profile__button_disable {
   color: #C2C2C2;
   background-color: #fff;
+  cursor: default;
 }
 
 .profile__button:nth-child(6) {

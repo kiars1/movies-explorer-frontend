@@ -14,6 +14,9 @@ function MoviesCard(props) {
   
   const id = movie.id
 
+  const savedMoviesCach = JSON.parse(localStorage.getItem("savedMovies"))
+
+  // console.log(savedMovies)
   //Проверка массива на совпадение с сохраненными фильмами
   function checkSave(savedMovies, id) {
     if (savedMovies != null) {
@@ -26,7 +29,7 @@ function MoviesCard(props) {
   const [isLike, setIsLike] = React.useState();
   
   React.useEffect(() => {
-    setIsLike(checkSave(savedMovies, id))})
+    setIsLike(checkSave(savedMoviesCach, id))})
 
   return (
     <>

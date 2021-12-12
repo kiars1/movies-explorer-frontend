@@ -91,7 +91,49 @@
     height: 21px;
     margin: 14px;
     background-size: 45%;
-    transform: rotate(0.0turn);
+    transform: rotate(0turn);
+  }
+}
+
+@keyframes like-close {
+  0% {
+    width: 21px;
+    height: 21px;
+    margin: 14px;
+    background-size: 45%;
+    transform: rotate(0turn);
+    opacity: 1;
+  }
+  25% {
+    transform: rotate(0.3turn);
+    opacity: 1;
+    z-index: 1;
+    visibility:visible
+  }
+  50% {
+    width: 30px;
+    height: 30px;
+    margin: 11px;
+    background-size: 55%;
+    transform: rotate(0.7turn);
+    opacity: 1;
+    z-index: 1;
+    visibility:visible
+  }
+  90% {
+    background-color: #f4f4f4;
+    opacity: 1;
+    z-index: 1;
+    visibility:visible;
+    transform: rotate(1.4turn);
+  }
+  100% {
+    width: 0px;
+    height: 0px;
+    margin: 24px;
+    background-size: 0%;
+    opacity: 0;
+    z-index: 0;
   }
 }
 
@@ -128,8 +170,9 @@
   visibility: hidden;
   opacity: 0;
   z-index: 0;
-  transition: visibility 1s,z-index 1s,opacity 1s;
+  transition: visibility 1s, z-index 1s, opacity 1s;
   transition-delay: 0.2s;
+  animation: like-close 1s ease-in-out;
 }
 
 @keyframes save-closed {
@@ -143,6 +186,25 @@
   }
   100% {
     width: 0px;
+  }
+}
+
+@keyframes save-open {
+  0% {
+    width: 0px;
+    opacity: 0;
+  }
+  50% {
+    width: 18px;
+    opacity: 0.7;
+  }
+  75% {
+    width: 72px;
+    opacity: 1;
+  }
+  100% {
+    width: 72px;
+    opacity: 1;
   }
 }
 
@@ -167,14 +229,15 @@
   visibility: visible;
   opacity: 0;
   z-index: 1;
-  transition: visibility 1s,z-index 1s,opacity 1s;
+  transition: visibility 1s, z-index 1s, opacity 1s;
+  animation: save-open 1.5s linear;
 }
 
 .movies-card__save_disable {
   visibility: hidden;
   opacity: 0;
   z-index: -1;
-  transition: visibility 1s,z-index 1s,opacity 1s;
+  transition: visibility 1s, z-index 1s, opacity 1s;
   animation: save-closed 1s ease-in-out;
 }
 

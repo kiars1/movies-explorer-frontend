@@ -13,23 +13,15 @@ function Movies(props) {
     savedMovies,
     handleSaveMovie,
     handleRemoveMovie,
+    blockInput
   } = props;
-
-  const [checkWord, setCheckWord] = React.useState("");
-  const [checkShort, setCheckShort] = React.useState(false);
-
-  //Поиск
-  const onSubmitForm = () => {
-    getMoviesAll(checkWord, checkShort);
-  };
 
   return (
     <main className="movies">
       <SearchForm
-        setCheckShort={setCheckShort}
-        checkWord={checkWord}
-        setCheckWord={setCheckWord}
-        onSubmitForm={onSubmitForm}
+
+        blockInput={blockInput}
+        getMoviesAll={getMoviesAll}
       />
       {isLoading ? (
         <Preloader />

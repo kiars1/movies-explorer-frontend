@@ -4,11 +4,27 @@ import { useValidation } from "../../utils/Validation.js";
 import Preloader from "../Preloader/Preloader";
 
 function Profile(props) {
-  const { windowWidth, onSignOut, onUpdateUser, errorMesage, errorVision, isLoading } =
-    props;
+  const {
+    windowWidth,
+    onSignOut,
+    onUpdateUser,
+    errorMesage,
+    errorVision,
+    isLoading,
+    blockInput,
+  } = props;
 
   const currentUser = React.useContext(CurrentUserContext);
-  const { values, handleChange, errors, isValid } = useValidation();
+  const { values, handleChange, errors, isValid, setIsValid } = useValidation();
+
+  React.useEffect(() => {
+    if (
+      values["email"] === currentUser.email &&
+      values["name"] === currentUser.name
+    ) {
+      setIsValid(false);
+    }
+  }, [values]);
 
   //валидация
   React.useEffect(() => {
@@ -20,81 +36,92 @@ function Profile(props) {
   function handleSubmit(evt) {
     evt.preventDefault();
 
-    onUpdateUser(values["name"], values["email"]);
+    onUpdateUser(values["name"], values["email"])
+    setIsValid(false);;
   }
 
   return (
     <main className="profile">
-    {isLoading ?
-      <Preloader /> :
-      <>
-      <h2
-        className={`profile__title ${
-          windowWidth > 768 && "profile__title_hidden"
-        }`}
-      >
-        Привет, {currentUser.name}
-      </h2>
-      <form className="profile__form" onSubmit={handleSubmit}>
-        <div className="profile__info">
-          <p className="profile__subtitle">Имя</p>
-          <p className="profile__subtitle">Email</p>
-        </div>
-        <div className="profile__info">
-          <input
-            onChange={handleChange}
-            className={`profile__input ${
-              errors["name"] !== `profile__input_error`
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <>
+          <h2
+            className={`profile__title ${
+              windowWidth > 768 && "profile__title_hidden"
             }`}
-            defaultValue={currentUser.name}
-            type="name"
-            placeholder="Имя"
-            minLength="2"
-            maxLength="30"
-            name="name"
-            required
-          />
-          <input
-            onChange={handleChange}
-            className={`profile__input ${
-              errors["email"] !==  `profile__input_error`
-            }`}
-            type="Email"
-            placeholder="Email"
-            defaultValue={currentUser.email}
-            minLength="2"
-            maxLength="30"
-            name="email"
-            required
-          />
-        </div>
-        <p
-          className={`profile__alarm ${
-            errors["name"] !== "" && `profile__alarm_active`
-          } ${errors["email"] !== "" && `profile__alarm_active`}`}
-        >
-          {errors["email"]}
-          {errors["name"]}
-        </p>
-        <p
-          className={`profile__alarm ${errorVision && "profile__alarm_active"}`}
-        >
-          {errorMesage}
-        </p>
-        <button
-          className={`profile__button ${
-            !isValid && `profile__button_disable`
-          } `}
-          type="submit"
-          disabled={!isValid}
-        >
-          Редактировать
-        </button>
-        <button className="profile__button" type="submit" onClick={onSignOut}>
-          Выйти из аккаунта
-        </button>
-      </form>
-      </>}
+          >
+            Привет, {currentUser.name}
+          </h2>
+          <form className="profile__form" onSubmit={handleSubmit}>
+            <div className="profile__info">
+              <p className="profile__subtitle">Имя</p>
+              <p className="profile__subtitle">Email</p>
+            </div>
+            <div className="profile__info">
+              <input
+                disabled={blockInput}
+                onChange={handleChange}
+                className={`profile__input ${
+                  errors["name"] !== `profile__input_error`
+                }`}
+                defaultValue={currentUser.name}
+                type="name"
+                placeholder="Имя"
+                minLength="2"
+                maxLength="30"
+                name="name"
+                required
+              />
+              <input
+                disabled={blockInput}
+                onChange={handleChange}
+                className={`profile__input ${
+                  errors["email"] !== `profile__input_error`
+                }`}
+                type="Email"
+                placeholder="Email"
+                defaultValue={currentUser.email}
+                minLength="2"
+                maxLength="30"
+                name="email"
+                required
+              />
+            </div>
+            <p
+              className={`profile__alarm ${
+                errors["name"] !== "" && `profile__alarm_active`
+              } ${errors["email"] !== "" && `profile__alarm_active`}`}
+            >
+              {errors["email"]}
+              {errors["name"]}
+            </p>
+            <p
+              className={`profile__alarm ${
+                errorVision && "profile__alarm_active"
+              }`}
+            >
+              {errorMesage}
+            </p>
+            <button
+              className={`profile__button ${
+                !isValid && `profile__button_disable`
+              } `}
+              type="submit"
+              disabled={!isValid}
+            >
+              Редактировать
+            </button>
+            <button
+              className="profile__button"
+              type="submit"
+              onClick={onSignOut}
+            >
+              Выйти из аккаунта
+            </button>
+          </form>
+        </>
+      )}
     </main>
   );
 }

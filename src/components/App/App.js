@@ -46,6 +46,7 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [resultMovies, setResultMovies] = React.useState("");
   const [resultSavedMovies, setResultSavedMovies] = React.useState("");
+  const [blockInput, setBlockInput] = React.useState(false);
 
   const [loggedIn, setLoggedIn] = React.useState(true); //это специальный костыль. Чтобы при перезагрузки страницы не выбрасывало на "/"
   const history = useHistory();
@@ -84,13 +85,14 @@ function App() {
 
   //Регистрация пользователя
   function handleRegisterUser(name, email, password) {
+    setBlockInput(true);
     setIsLoading(true);
     MainApi.register(name, email, password)
       .then((res) => {
         if (res.email === email) {
-          history.push("/signin");
           setErrorMesage("");
           setErrorVision(false);
+          handleAuthorizeUser(email, password);
         }
       })
       .catch((err) => {
@@ -98,12 +100,14 @@ function App() {
         setErrorVision(true);
       })
       .finally(() => {
+        setBlockInput(false);
         setIsLoading(false);
       });
   }
 
   //Авторизация пользователя
   function handleAuthorizeUser(email, password) {
+    setBlockInput(true);
     setIsLoading(true);
     MainApi.authorize(email, password)
       .then((res) => {
@@ -120,6 +124,7 @@ function App() {
         setErrorVision(true);
       })
       .finally(() => {
+        setBlockInput(false);
         setIsLoading(false);
       });
   }
@@ -130,12 +135,17 @@ function App() {
     localStorage.removeItem("movies");
     localStorage.removeItem("savedMovies");
     localStorage.removeItem("user");
+    localStorage.removeItem("wordSM");
+    localStorage.removeItem("wordM");
+    localStorage.removeItem("shortSM");
+    localStorage.removeItem("shortSM");
     history.push("/");
     history.go();
   };
 
   //Обловнялем данные пользователя.
   function handleUpdateUser(name, email) {
+    setBlockInput(true);
     setIsLoading(true);
     MainApi.updateUserInfo(name, email)
       .then((data) => {
@@ -149,25 +159,49 @@ function App() {
       })
       .finally(() => {
         setIsLoading(false);
+        setBlockInput(false);
       });
   }
 
   //Получаем и выдаём карточки внешнего API
-  const getMoviesAll = (word, short) => {
+  React.useEffect(() => {
     setIsLoading(true);
-    MoviesApi.getMovies()
-      .then((movies) => {
-        const filteredMovies = filterMovies(movies, word, short);
-        setResultMovies("Ничего не найдено");
-        setMovies(filteredMovies);
-        localStorage.setItem("movies", JSON.stringify(filteredMovies));
-      })
-      .catch(() => {
-        setResultMovies("Ошибка сервера");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    if (loggedIn) {
+      MoviesApi.getMovies()
+        .then((movies) => {
+          localStorage.setItem("movies", JSON.stringify(movies));
+          setMovies(movies);
+          downloadSearchCashe();
+        })
+        .catch((err) => {
+          console.log(err.message);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
+  }, [loggedIn]);
+
+  //Делаем запрос в локальное хранилище и фильтруем фильмы
+  const getMoviesAll = (word, short) => {
+    setBlockInput(true);
+    const movies = JSON.parse(localStorage.getItem("movies"));
+    if (word === "") {
+      setMovies(movies);
+    }
+    if (short === "") {
+      setMovies(movies);
+      if (movies.length === 0) {
+        setResultMovies("Нет добавленных фильмов");
+      } else {
+        setResultMovies("");
+      }
+    } else {
+      const filteredMovies = filterMovies(movies, word, short);
+      setResultMovies("Ничего не найдено");
+      setMovies(filteredMovies);
+    }
+    setTimeout(setBlockInput, [400], false);
   };
 
   //Фильтруем фильмы
@@ -199,13 +233,20 @@ function App() {
           localStorage.setItem("savedMovies", JSON.stringify(savedMoviesOwner));
           setSavedMovies(savedMoviesOwner);
           setIsLoading(false);
+          downloadSearchCashe();
         })
-        .catch((err) => console.log(err.message));
+        .catch((err) => {
+          console.log(err.message);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
   }, [loggedIn, currentUser]);
 
   //Делаем запрос в локальное хранилище и фильтруем фильмы
   const getMoviesSave = (word, short) => {
+    setBlockInput(true);
     const movies = JSON.parse(localStorage.getItem("savedMovies"));
     if (word === "") {
       setSavedMovies(movies);
@@ -227,7 +268,15 @@ function App() {
       setResultSavedMovies("Ничего не найдено");
       setSavedMovies(filteredMovies);
     }
+    setTimeout(setBlockInput, [400], false);
   };
+
+  function downloadSearchCashe() {
+    if (localStorage.getItem("wordM") != null) {
+    getMoviesAll(localStorage.getItem("wordM"),  JSON.parse(localStorage.getItem("shortM")))
+    getMoviesSave(localStorage.getItem("wordSM"),  JSON.parse(localStorage.getItem("shortSM")));
+  }
+  }
 
   // Функция сохранения карточки
   const handleSaveMovie = (movie) => {
@@ -239,7 +288,12 @@ function App() {
           JSON.stringify([...savedMovies, movie.movie])
         );
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        alert(
+          `Невозможно сохранить фильм по причине: "${err.validation.body.message}"`
+        );
+      });
   };
 
   // Функция удаления карточки
@@ -334,6 +388,7 @@ function App() {
               savedMovies={savedMovies}
               handleSaveMovie={handleSaveMovie}
               handleRemoveMovie={handleRemoveMovie}
+              blockInput={blockInput}
             />
           </ProtectedRoute>
 
@@ -346,6 +401,7 @@ function App() {
               resultMovies={resultSavedMovies}
               handleSaveMovie={handleSaveMovie}
               handleRemoveMovie={handleRemoveMovie}
+              blockInput={blockInput}
             />
           </ProtectedRoute>
 
@@ -357,6 +413,7 @@ function App() {
               errorMesage={errorMesage}
               errorVision={errorVision}
               isLoading={isLoading}
+              blockInput={blockInput}
             />
           </ProtectedRoute>
 
@@ -364,21 +421,25 @@ function App() {
             <Main myAge={myAge} />
           </Route>
           <Route exact path="/signup">
+            {loggedIn ? <Redirect to="/" /> : <Redirect to="/signup" />}
             <Register
               onRegisterUser={handleRegisterUser}
               errorMesage={errorMesage}
               errorVision={errorVision}
               isLoading={isLoading}
               onRouteChange={handleRouteChange}
+              blockInput={blockInput}
             />
           </Route>
           <Route exact path="/signin">
+            {loggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
             <Login
               onAuthorizeUser={handleAuthorizeUser}
               errorMesage={errorMesage}
               errorVision={errorVision}
               isLoading={isLoading}
               onRouteChange={handleRouteChange}
+              blockInput={blockInput}
             />
           </Route>
           <Route path="/404">
@@ -386,7 +447,7 @@ function App() {
           </Route>
           <Redirect from="*" to="/404" />
         </Switch>
-        <Footer year={year}/>
+        <Footer year={year} />
       </div>
     </CurrentUserContext.Provider>
   );

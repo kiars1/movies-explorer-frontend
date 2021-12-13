@@ -286,11 +286,11 @@ function App() {
   const handleSaveMovie = (movie) => {
     MainApi.saveMovie(movie)
       .then((movie) => {
-        setSavedMovies([...savedMovies, movie.movie]);
+        setSavedMovies([...savedMoviesAll, movie.movie]);
         setSavedMoviesAll([...savedMoviesAll, movie.movie]);
         localStorage.setItem(
           "savedMovies",
-          JSON.stringify([...savedMovies, movie.movie])
+          JSON.stringify([...savedMoviesAll, movie.movie])
         );
       })
       .catch((err) => {

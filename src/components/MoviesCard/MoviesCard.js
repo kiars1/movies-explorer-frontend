@@ -11,11 +11,13 @@ function MoviesCard(props) {
     savedMoviesAll,
   } = props;
 
+  console.log(movie.id)
+
   const location = useLocation();
 
   const id = movie.id
 
-  // console.log(savedMovies)
+
   //Проверка массива на совпадение с сохраненными фильмами
   function checkSave(savedMovies, id) {
     if (savedMovies != null) {
@@ -26,6 +28,9 @@ function MoviesCard(props) {
   }}
 
   const [isLike, setIsLike] = React.useState();
+
+  console.log(savedMoviesAll)
+  console.log(savedMovies)
   
   React.useEffect(() => {
     setIsLike(checkSave(savedMoviesAll, id))})
@@ -73,7 +78,7 @@ function MoviesCard(props) {
           }}
         ></button>
         <button className={`movies-card__liked ${!isLike && "movies-card__liked_disable"} ${isLike && "movies-card__liked_opened"}`} onClick={() => {
-          const filmId = savedMovies.find((film) => film.movieId == movie.id)._id
+          const filmId = savedMoviesAll.find((film) => film.movieId == movie.id)._id
           handleRemoveMovie(filmId)
           }}></button>
       </li>

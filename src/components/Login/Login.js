@@ -32,15 +32,17 @@ function Login(props) {
     onAuthorizeUser(values["email"], values["password"]);
   }
 
+  document.title = `Войти`
+
   return (
     <main className="autorization">
       {isLoading ? (
         <Preloader />
       ) : (
         <>
-          <Link to="/">
+            <Link to="/">
             <img src={Logo} className="autorization__logo" alt="Проект Муви" />
-          </Link>
+            </Link>
           <h1 className="autorization__heading">Рады видеть!</h1>
           <form className="autorization__form" onSubmit={handleSubmit}>
             <p className="autorization__tag">Email</p>
@@ -48,7 +50,7 @@ function Login(props) {
               disabled={blockInput}
               onChange={handleChange}
               className={`autorization__input ${
-                errors["email"] !== `autorization__input_error `
+                errors["email"] !== "" && `autorization__input_error `
               }`}
               type="Email"
               pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$"
@@ -70,7 +72,7 @@ function Login(props) {
               disabled={blockInput}
               onChange={handleChange}
               className={`autorization__input ${
-                errors["password"] !== `autorization__input_error `
+                errors["password"] !== "" && `autorization__input_error `
               }`}
               type={isVisiblePassword}
               name="password"

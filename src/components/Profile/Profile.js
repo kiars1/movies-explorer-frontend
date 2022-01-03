@@ -24,12 +24,14 @@ function Profile(props) {
     ) {
       setIsValid(false);
     }
+    // eslint-disable-next-line
   }, [values]);
 
   //валидация
   React.useEffect(() => {
     values["name"] = currentUser.name;
     values["email"] = currentUser.email;
+    // eslint-disable-next-line
   }, [currentUser]);
 
   //Передаем данные на уровень выше
@@ -37,8 +39,10 @@ function Profile(props) {
     evt.preventDefault();
 
     onUpdateUser(values["name"], values["email"])
-    setIsValid(false);;
+    setIsValid(false);
   }
+
+  document.title = `${currentUser.name}`
 
   return (
     <main className="profile">
@@ -63,7 +67,7 @@ function Profile(props) {
                 disabled={blockInput}
                 onChange={handleChange}
                 className={`profile__input ${
-                  errors["name"] !== `profile__input_error`
+                  errors["name"] !== undefined && errors["name"] !== "" && `profile__input_error`
                 }`}
                 defaultValue={currentUser.name}
                 type="name"
@@ -77,7 +81,7 @@ function Profile(props) {
                 disabled={blockInput}
                 onChange={handleChange}
                 className={`profile__input ${
-                  errors["email"] !== `profile__input_error`
+                  errors["email"] !== undefined && errors["email"] !== "" && `profile__input_error`
                 }`}
                 type="Email"
                 placeholder="Email"
@@ -99,6 +103,8 @@ function Profile(props) {
             <p
               className={`profile__alarm ${
                 errorVision && "profile__alarm_active"
+              } ${
+                errorMesage === `Данные обновлены` && "profile__alarm_green"
               }`}
             >
               {errorMesage}

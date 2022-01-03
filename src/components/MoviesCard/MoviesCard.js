@@ -5,33 +5,27 @@ function MoviesCard(props) {
   const {
     windowWidth,
     movie,
-    savedMovies,
     handleSaveMovie,
     handleRemoveMovie,
     savedMoviesAll,
   } = props;
 
-  console.log(movie.id)
-
   const location = useLocation();
 
   const id = movie.id
-
 
   //Проверка массива на совпадение с сохраненными фильмами
   function checkSave(savedMovies, id) {
     if (savedMovies != null) {
     for(var i=0;i<savedMovies.length;i++){
+      // eslint-disable-next-line
       if(savedMovies[i].movieId==id) return true;
     }
     return false;
   }}
 
   const [isLike, setIsLike] = React.useState();
-
-  console.log(savedMoviesAll)
-  console.log(savedMovies)
-  
+  // eslint-disable-next-line
   React.useEffect(() => {
     setIsLike(checkSave(savedMoviesAll, id))})
 
@@ -40,7 +34,7 @@ function MoviesCard(props) {
       <li className="movies-card">
         <a
         href={location.pathname === "/movies" ? (movie.trailerLink) : (movie.thumbnail)}
-          className="movies-card__image"
+          className="movies-card__link"
           target="_blank"
           rel="noreferrer"
         >
@@ -78,6 +72,7 @@ function MoviesCard(props) {
           }}
         ></button>
         <button className={`movies-card__liked ${!isLike && "movies-card__liked_disable"} ${isLike && "movies-card__liked_opened"}`} onClick={() => {
+          // eslint-disable-next-line
           const filmId = savedMoviesAll.find((film) => film.movieId == movie.id)._id
           handleRemoveMovie(filmId)
           }}></button>

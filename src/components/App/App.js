@@ -60,16 +60,18 @@ function App() {
           setLoggedIn(true);
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err.message);
+          handleSignOut();
         });
     } else {
       setLoggedIn(false); //этот специальный костыль правится сразу же. Пользователь даже не видет защищеных страниц.
     }
+    // eslint-disable-next-line
   }, []);
 
   //Получаем данные пользователя
   React.useEffect(() => {
-    if (loggedIn === true) {
+    if (localStorage.getItem("jwt")) {
       MainApi.getUserInfo()
         .then((res) => {
           setCurrentUser(res);
@@ -118,6 +120,7 @@ function App() {
           setErrorMesage("");
           setErrorVision(false);
           history.push("/movies");
+          document.title = `Фильмы`;
         }
       })
       .catch((err) => {
@@ -166,12 +169,11 @@ function App() {
 
   //Получаем и выдаём карточки внешнего API
   React.useEffect(() => {
-    setIsLoading(true);
-    if (loggedIn) {
+    if (localStorage.getItem("jwt")) {
+      setIsLoading(true);
       MoviesApi.getMovies()
         .then((movies) => {
           localStorage.setItem("movies", JSON.stringify(movies));
-          setMovies(movies);
           downloadSearchCashe();
         })
         .catch((err) => {
@@ -181,6 +183,7 @@ function App() {
           setIsLoading(false);
         });
     }
+    // eslint-disable-next-line
   }, [loggedIn]);
 
   //Делаем запрос в локальное хранилище и фильтруем фильмы
@@ -219,8 +222,8 @@ function App() {
 
   //Делаем запрос на наш API и получаем список фильмов
   React.useEffect(() => {
-    setIsLoading(true);
-    if (loggedIn) {
+    if (localStorage.getItem("jwt")) {
+      setIsLoading(true);
       MainApi.getSavedMovies()
         .then((res) => {
           const Owner = localStorage.getItem("user");
@@ -233,7 +236,7 @@ function App() {
           }
           localStorage.setItem("savedMovies", JSON.stringify(savedMoviesOwner));
           setSavedMovies(savedMoviesOwner);
-          setSavedMoviesAll(savedMoviesOwner)
+          setSavedMoviesAll(savedMoviesOwner);
           setIsLoading(false);
           downloadSearchCashe();
         })
@@ -244,7 +247,8 @@ function App() {
           setIsLoading(false);
         });
     }
-  }, [loggedIn, currentUser]);
+    // eslint-disable-next-line
+  }, [localStorage.getItem("jwt")]);
 
   //Делаем запрос в локальное хранилище и фильтруем фильмы
   const getMoviesSave = (word, short) => {
@@ -275,11 +279,17 @@ function App() {
 
   function downloadSearchCashe() {
     if (localStorage.getItem("wordM") != null) {
-    getMoviesAll(localStorage.getItem("wordM"),  JSON.parse(localStorage.getItem("shortM")))
-    if (localStorage.getItem("wordSM") != null) {
-      getMoviesSave(localStorage.getItem("wordSM"),  JSON.parse(localStorage.getItem("shortSM")));
+      getMoviesAll(
+        localStorage.getItem("wordM"),
+        JSON.parse(localStorage.getItem("shortM"))
+      );
+      if (localStorage.getItem("wordSM") != null) {
+        getMoviesSave(
+          localStorage.getItem("wordSM"),
+          JSON.parse(localStorage.getItem("shortSM"))
+        );
+      }
     }
-  }
   }
 
   // Функция сохранения карточки
@@ -305,14 +315,13 @@ function App() {
   const handleRemoveMovie = (id) => {
     MainApi.removeMovie(id)
       .then(() => {
-        setSavedMovies(savedMovies.filter((m) => m._id !== id));
-        setSavedMoviesAll(savedMoviesAll.filter((m) => m._id !== id))
+        setSavedMovies(savedMoviesAll.filter((m) => m._id !== id));
+        setSavedMoviesAll(savedMoviesAll.filter((m) => m._id !== id));
         localStorage.setItem(
           "savedMovies",
-          JSON.stringify(savedMovies.filter((m) => m._id !== id))
+          JSON.stringify(savedMoviesAll.filter((m) => m._id !== id))
         );
       })
-
       .catch((err) => console.log(err.message));
   };
 
@@ -391,7 +400,6 @@ function App() {
               getMoviesAll={getMoviesAll}
               movies={movies}
               resultMovies={resultMovies}
-              savedMovies={savedMovies}
               handleSaveMovie={handleSaveMovie}
               handleRemoveMovie={handleRemoveMovie}
               blockInput={blockInput}

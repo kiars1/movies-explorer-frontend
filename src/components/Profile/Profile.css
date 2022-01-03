@@ -222,3 +222,7 @@
   opacity: 1;
   transition: opacity 0.5s;
 }
+
+.profile__alarm_green {
+  color: #46d404;
+}

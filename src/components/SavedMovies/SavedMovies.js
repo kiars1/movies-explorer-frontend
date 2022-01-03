@@ -16,6 +16,8 @@ function SavedMovies(props) {
     savedMoviesAll,
   } = props;
 
+  document.title = `Сохраненные фильмы`
+
   return (
     <main className="savedmovies">
       <SearchForm blockInput={blockInput} getMoviesSave={getMoviesSave} />
@@ -23,10 +25,9 @@ function SavedMovies(props) {
         <Preloader />
       ) : (
         <MoviesCardList
-        savedMoviesAll={savedMoviesAll}
+          savedMoviesAll={savedMoviesAll}
           windowWidth={windowWidth}
           movies={savedMovies}
-          savedMovies={savedMovies}
           resultMovies={resultMovies}
           handleSaveMovie={handleSaveMovie}
           handleRemoveMovie={handleRemoveMovie}

@@ -6,13 +6,13 @@ function MoviesCardList(props) {
     windowWidth,
     movies,
     resultMovies,
-    savedMovies,
     handleSaveMovie,
     handleRemoveMovie,
     savedMoviesAll
   } = props;
 
   const [showCards, setShowCards] = React.useState(windowWidth > 768 ? 12 : windowWidth > 480 ? 8 : 5 );
+  // eslint-disable-next-line
   const [addCards, setAddCards] = React.useState(windowWidth > 768 ? 3 : 2);
 
   return (
@@ -28,7 +28,6 @@ function MoviesCardList(props) {
                   windowWidth={windowWidth}
                   key={movie.id || movie.movieId}
                   movie={movie}
-                  savedMovies={savedMovies}
                   handleSaveMovie={handleSaveMovie}
                   handleRemoveMovie={handleRemoveMovie}
                   savedMoviesAll={savedMoviesAll}

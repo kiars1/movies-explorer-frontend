@@ -15,13 +15,14 @@ function SearchForm(props) {
 
   React.useEffect(() => {
     if (wordM != null) {
-    location.pathname === "/movies" ? setWord(wordM) : console.log('костыль');
+    location.pathname === "/movies" ? setWord(wordM) : console.log('https://youtu.be/dQw4w9WgXcQ');
   }
   if (wordSM != null) {
-    location.pathname === "/movies" ? console.log('костыль') : setWord(wordSM);
+    location.pathname === "/movies" ? console.log('https://youtu.be/dQw4w9WgXcQ') : setWord(wordSM);
   }
 
     location.pathname === "/movies" ? setShort(shortM) : setShort(shortSM);
+    // eslint-disable-next-line
   }, [wordSM, shortSM, wordM, shortM]);
 
   function handleChangeWord(evt) {
@@ -32,6 +33,7 @@ function SearchForm(props) {
     setShort(evt.target.checked)
       if (evt.target.checked === true) {
       setShort(true);
+      // eslint-disable-next-line
       {
         location.pathname === "/movies"
           ? getMoviesAll(word, true)
@@ -43,6 +45,7 @@ function SearchForm(props) {
       }
     } else {
       setShort(false);
+      // eslint-disable-next-line
       {
         location.pathname === "/movies"
           ? getMoviesAll(word, false)

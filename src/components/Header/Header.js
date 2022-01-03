@@ -17,6 +17,7 @@ function Header(props) {
 
   const backToMain = () => {
     history.push('./')
+    document.title = `Дипломный проект "Movies"`
   };
 
   return (

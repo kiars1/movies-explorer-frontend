@@ -12,6 +12,7 @@ function Main(props) {
   } = props
   return (
     <main className="main">
+      <div className="root__index">{document.title = `Дипломный проект "Movies"`}</div>
         <Promo />
         <AboutProject />
         <Techs />

@@ -32,6 +32,8 @@ function Register(props) {
     onRegisterUser(values["name"], values["email"], values["password"]);
   }
 
+  document.title = `Регистрация`
+
   return (
     <main className="autorization">
       {isLoading ? (
@@ -39,7 +41,7 @@ function Register(props) {
       ) : (
         <>
           <Link to="/">
-            <img src={Logo} className="autorization__logo" alt="Проект Муви" />
+            <img src={Logo} className="autorization__logo" alt="Проект Муви"/>
           </Link>
           <h1 className="autorization__heading">Добро пожаловать!</h1>
           <form className="autorization__form" onSubmit={handleSubmit}>
@@ -47,7 +49,7 @@ function Register(props) {
             <input
               disabled={blockInput}
               className={`autorization__input ${
-                errors["name"] !== `autorization__input_error`
+                errors["name"] !== "" && `autorization__input_error`
               }`}
               type="name"
               placeholder="Имя"
@@ -69,7 +71,7 @@ function Register(props) {
             <input
               disabled={blockInput}
               className={`autorization__input ${
-                errors["email"] !== `autorization__input_error`
+                errors["email"] !== "" &&`autorization__input_error`
               }`}
               type="Email"
               pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$"
@@ -91,7 +93,7 @@ function Register(props) {
             <input
               disabled={blockInput}
               className={`autorization__input ${
-                errors["password"] !== `autorization__input_error`
+                errors["password"] !== "" && `autorization__input_error`
               }`}
               type={isVisiblePassword}
               placeholder="Пароль"

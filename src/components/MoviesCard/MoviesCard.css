@@ -106,7 +106,7 @@
     width: 30px;
     height: 30px;
     margin: 11px;
-    background-size: 55%;
+    background-size: 140%;
     transform: rotate(-0.1turn);
   }
   75% {
@@ -116,7 +116,7 @@
     width: 21px;
     height: 21px;
     margin: 14px;
-    background-size: 45%;
+    background-size: 120%;
     transform: rotate(0turn);
   }
 }
@@ -126,7 +126,7 @@
     width: 21px;
     height: 21px;
     margin: 14px;
-    background-size: 45%;
+    background-size: 120%;
     transform: rotate(0turn);
     opacity: 1;
   }
@@ -140,7 +140,7 @@
     width: 30px;
     height: 30px;
     margin: 11px;
-    background-size: 55%;
+    background-size: 140%;
     transform: rotate(0.7turn);
     opacity: 1;
     z-index: 1;
@@ -165,11 +165,11 @@
 
 .movies-card__liked {
   color: #000;
-  background-image: url(../../images/Like_1.svg);
+  background-image: url(../../images/Like_1.png);
   background-repeat: no-repeat;
   background-color: #ee3465;
-  background-position: 6px;
-  background-size: 45%;
+  background-position: center;
+  background-size: 120%;
   border: none;
   width: 21px;
   height: 21px;

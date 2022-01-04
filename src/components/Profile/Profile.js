@@ -75,6 +75,7 @@ function Profile(props) {
                 minLength="2"
                 maxLength="30"
                 name="name"
+                pattern="[А-Яа-яA-Za-z -]{1,}"
                 required
               />
               <input
@@ -89,6 +90,7 @@ function Profile(props) {
                 minLength="2"
                 maxLength="30"
                 name="email"
+                pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$"
                 required
               />
             </div>

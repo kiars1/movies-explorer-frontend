@@ -296,6 +296,7 @@ function App() {
   const handleSaveMovie = (movie) => {
     MainApi.saveMovie(movie)
       .then((movie) => {
+        console.log(movie)
         setSavedMovies([...savedMoviesAll, movie.movie]);
         setSavedMoviesAll([...savedMoviesAll, movie.movie]);
         localStorage.setItem(

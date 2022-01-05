@@ -160,6 +160,10 @@ function App() {
       .catch((err) => {
         setErrorMesage(err.message);
         setErrorVision(true);
+        if (err.message === "Необходима авторизация") {
+          handleSignOut()
+          alert("Сессия устарела");
+        }
       })
       .finally(() => {
         setIsLoading(false);
@@ -178,6 +182,10 @@ function App() {
         })
         .catch((err) => {
           console.log(err.message);
+          if (err.message === "Необходима авторизация") {
+            handleSignOut()
+            alert("Сессия устарела");
+          }
         })
         .finally(() => {
           setIsLoading(false);
@@ -242,6 +250,10 @@ function App() {
         })
         .catch((err) => {
           console.log(err.message);
+          if (err.message === "Необходима авторизация") {
+            handleSignOut()
+            alert("Сессия устарела");
+          }
         })
         .finally(() => {
           setIsLoading(false);
@@ -305,10 +317,12 @@ function App() {
         );
       })
       .catch((err) => {
-        console.log(err);
-        alert(
+        if (err.message === "Необходима авторизация") {
+          handleSignOut()
+          alert("Сессия устарела");
+        } else { alert(
           `Невозможно сохранить фильм по причине: "${err.validation.body.message}"`
-        );
+        );}
       });
   };
 
@@ -323,7 +337,12 @@ function App() {
           JSON.stringify(savedMoviesAll.filter((m) => m._id !== id))
         );
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+      if (err.message === "Необходима авторизация") {
+        handleSignOut()
+        alert("Сессия устарела");
+      }
+    })
   };
 
   //Открытие Бургер-меню

@@ -1,0 +1,55 @@
+.account__block {
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  align-items: center;
+  margin-left: auto;
+  text-decoration: none;
+  user-select: none;
+}
+
+@media screen and (max-width: 768px) {
+  .account__block {
+    margin: auto auto 5px auto;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .account__block {
+    margin: auto auto 48px auto;
+  }
+}
+
+.account__email {
+  font-size: 14px;
+  text-decoration: none;
+  color: #000;
+  margin: 0;
+  margin-right: 17px;
+}
+
+.account__button {
+  width: 26px;
+  height: 30px;
+  background-color: #f4f4f4;
+  background-image: url(../../images/Account_1.svg);
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  margin-right: 70px;
+  transition: opacity 0.5s;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.account__button:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s;
+}
+
+@media screen and (max-width: 768px) {
+    .account__button {
+      margin: auto;
+    }
+  }

@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  margin: auto;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  padding-top: 18px;
+}
+
+.header__landing {
+  background-color: #dddee3;
+}
+
+.header__logo {
+  width: 38px;
+  height: 38px;
+  margin-left: 70px;
+  cursor: pointer;
+  user-select: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header__logo {
+    margin-left: 30px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .header__logo {
+    margin-left: 14px;
+  }
+}
